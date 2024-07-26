@@ -1,6 +1,8 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:RoslynSyntaxTreeVisualizer.ViewModels"
+        xmlns:models="using:RoslynSyntaxTreeVisualizer.Models.SyntaxTreeData"
+        xmlns:templates="using:RoslynSyntaxTreeVisualizer.Views.Templates"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -12,9 +14,71 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="0">
+            <StackPanel>
+                <Border
+                    CornerRadius="5"
+                    BorderBrush="DarkSlateGray">
+                    <TextBlock
+                        FontSize="20"
+                        HorizontalAlignment="Center"
+                        Text="Code input">
+                    </TextBlock>
+                </Border>
+                <Border
+                    Padding="2, 0, 2, 0"
+                    BorderBrush="BlueViolet"
+                    BorderThickness="1"
+                    CornerRadius="5">
+                    <TextBox CornerRadius="10"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Height="400"
+                             Text="{Binding Code}"
+                             Padding="10"
+                             Watermark="write your C# code here...">
+                    </TextBox>
+                </Border>
+                <Border
+                    Padding="5">
+                    <Button
+                        Content="Analyze"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Command="{Binding AnalyzeUserCodeCommand}"
+                        x:Name="SubmitCodeButton">
+                    </Button>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="1">
+            <StackPanel>
+                <Border
+                    CornerRadius="5">
+                    <TextBlock
+                        x:Name="My"
+                        FontSize="20"
+                        HorizontalAlignment="Center"
+                        Text="Syntax tree visualizer">
+                    </TextBlock>
+                </Border>
+                <TreeView
+                    ItemsSource="{Binding Root}"
+                    x:Name="MyTreeViewTemplate">
+                    <TreeView.DataTemplates>
+                        <templates:SyntaxTreeNodeViewTemplate></templates:SyntaxTreeNodeViewTemplate>
+                        <templates:SyntaxTreeTokenViewTemplate></templates:SyntaxTreeTokenViewTemplate>
+                    </TreeView.DataTemplates>
+                </TreeView>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Window>

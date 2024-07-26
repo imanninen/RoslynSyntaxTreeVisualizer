@@ -2,6 +2,6 @@
 
 namespace RoslynSyntaxTreeVisualizer.ViewModels;
 
-public class ViewModelBase : ReactiveObject
+public class ViewModelBase
 {
 }

@@ -1,0 +1,48 @@
+<TreeDataTemplate xmlns="https://github.com/avaloniaui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:models="using:RoslynSyntaxTreeVisualizer.Models.SyntaxTreeData"
+                  xmlns:vm="using:RoslynSyntaxTreeVisualizer.ViewModels"
+                  x:Class="RoslynSyntaxTreeVisualizer.Views.Templates.SyntaxTreeNodeViewTemplate"
+                  x:DataType="models:SyntaxTreeNode"
+                  DataType="{x:Type models:SyntaxTreeNode}"
+                  ItemsSource="{Binding Children}">
+    <Border
+        BorderBrush="BlueViolet"
+        BorderThickness="2"
+        CornerRadius="5"
+        Padding="5">
+        <StackPanel>
+            <TextBlock
+                Padding="0, 4, 0, 4"
+                FontSize="15"
+                FontWeight="Heavy"
+                Text="{Binding Kind}" />
+            <Button
+                Padding="0, 4, 0, 4"
+                Content="Show"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                x:Name="ShowStringRepresentationButton">
+                <Button.Flyout>
+                    <Flyout>
+                        <Border 
+                            CornerRadius="5"
+                            BorderBrush="BlueViolet"
+                            BorderThickness="1"
+                            Background="SlateGray"
+                            Padding="3">
+                            <StackPanel 
+                                Background="Transparent">
+                                <TextBlock
+                                    Text="{Binding StringRepresentation}">
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+
+        </StackPanel>
+
+    </Border>
+</TreeDataTemplate>
