@@ -69,9 +69,7 @@
                         Text="Syntax tree visualizer">
                     </TextBlock>
                 </Border>
-                <TreeView
-                    ItemsSource="{Binding Root}"
-                    x:Name="MyTreeViewTemplate">
+                <TreeView ItemsSource="{Binding Root}">
                     <TreeView.DataTemplates>
                         <templates:SyntaxTreeNodeViewTemplate></templates:SyntaxTreeNodeViewTemplate>
                         <templates:SyntaxTreeTokenViewTemplate></templates:SyntaxTreeTokenViewTemplate>
