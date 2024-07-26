@@ -1,7 +1,6 @@
 <TreeDataTemplate xmlns="https://github.com/avaloniaui"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:models="using:RoslynSyntaxTreeVisualizer.Models.SyntaxTreeData"
-                  xmlns:vm="using:RoslynSyntaxTreeVisualizer.ViewModels"
                   x:Class="RoslynSyntaxTreeVisualizer.Views.Templates.SyntaxTreeNodeViewTemplate"
                   x:DataType="models:SyntaxTreeNode"
                   DataType="{x:Type models:SyntaxTreeNode}"
@@ -25,13 +24,13 @@
                 x:Name="ShowStringRepresentationButton">
                 <Button.Flyout>
                     <Flyout>
-                        <Border 
+                        <Border
                             CornerRadius="5"
                             BorderBrush="BlueViolet"
                             BorderThickness="1"
                             Background="SlateGray"
                             Padding="3">
-                            <StackPanel 
+                            <StackPanel
                                 Background="Transparent">
                                 <TextBlock
                                     Text="{Binding StringRepresentation}">
