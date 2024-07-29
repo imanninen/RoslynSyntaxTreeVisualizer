@@ -16,15 +16,15 @@ public partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty] private string _code = "";
 
-    [ObservableProperty] private ObservableCollection<ISyntaxTreeUnit> _root =
-        new ObservableCollection<ISyntaxTreeUnit>{new SyntaxTreeNode(null, ReadOnlyCollection<ISyntaxTreeUnit>.Empty)};
+    [ObservableProperty] private ReadOnlyCollection<ISyntaxTreeUnit> _root =
+        new (new List<ISyntaxTreeUnit>{new SyntaxTreeNode(null, ReadOnlyCollection<ISyntaxTreeUnit>.Empty)});
 
     [ObservableProperty] private string _stringRepresentation = "";
 
     [RelayCommand]
     private void AnalyzeUserCode()
     {
-        Root = new ObservableCollection<ISyntaxTreeUnit> { _analyzer.Analyze(Code) };
+        Root = _analyzer.Analyze(Code).Children;
     }
 
     [RelayCommand]
