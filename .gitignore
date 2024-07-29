@@ -1,6 +1,9 @@
 RoslynSyntaxTreeVisualizer/bin/
 RoslynSyntaxTreeVisualizer/obj/
+RoslynSyntaxTreeVisualizer.Tests/bin/
+RoslynSyntaxTreeVisualizer.Tests/obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
 .idea
+.git
