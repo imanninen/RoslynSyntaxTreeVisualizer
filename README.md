@@ -9,4 +9,4 @@ I wore [test](RoslynSyntaxTreeVisualizer.Tests/UnitTest1.cs) for ensuring, that 
 function works properly.
 
 Also, I installed some additional packages for simplicity. You may see all my external
-dependencies [here](RoslynSyntaxTreeVisualizer.csproj).
+dependencies [here](RoslynSyntaxTreeVisualizer/RoslynSyntaxTreeVisualizer.csproj).
